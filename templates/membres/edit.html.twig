@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le membre{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Modifier {{ membre.nomMembre }}</h1>
+    
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <a href="{{ path('app_membres_show', {'id': membre.idMembre}) }}" class="btn btn-secondary">Annuler</a>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

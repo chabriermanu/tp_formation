@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MembresController!{% endblock %}
+{% block title %}Liste des membres{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,38 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name |capitalize }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/Manucha/Desktop/tp_metis/src/Controller/MembresController.php</code></li>
-        <li>Your template at <code>C:/Users/Manucha/Desktop/tp_metis/templates/membres/index.html.twig</code></li>
-    </ul>
+    <h1 class="text-center">Liste des membres</h1>
 </div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr class="text-center">
+            <th style="background-color: green; color: white;">Id</th>
+            <th style="background-color: green; color: white;">Nom</th>
+            <th style="background-color: green; color: white;">Login</th>
+            <th style="background-color: green; color: white;">Action</th> 
+        </tr>
+    </thead>
+    <tbody>
+    {% for membre in membres %}
+        <tr>
+            <td class="text-center">{{ membre.idMembre }}</td>
+            <td>{{ membre.nomMembre|upper }}</td>
+            <td>{{ membre.loginMembre|capitalize }}</td>
+            <td class="text-center">
+                <a class="btn btn-success rounded-pill text-white" href="{{path('app_membres_show',{'id': membre.idMembre})}}">Afficher</a>
+                <a class="btn btn-warning rounded-pill text-white" href="{{path('app_membres_edit',{'id': membre.idMembre})}}">Editer</a>
+                <a class="btn btn-danger rounded-pill text-white" href="{{path('app_membres_delete', {'id': membre.idMembre})}}">Supprimer</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">no records found</td>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="row">
+       <a class="text-center bg-dark text-primary" href="{{path('app_membres_new')}}">Ajouter un membres</a>
+</div>
+
 {% endblock %}
