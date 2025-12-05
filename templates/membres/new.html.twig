@@ -10,7 +10,7 @@
 
 <div class="example-wrapper">
 
-    {{ form_start(form) }}
+   {{ form_start(form) }}
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
@@ -18,26 +18,37 @@
                         <div class="card-header bg-primary text-white">
                             <h3>Ajouter un membre</h3>
                         </div>
+
                         <div class="card-body bg-white p-4">
-                            <div class="mb-3">
-                                {{ form_row(form.nomMembre) }}
-                            </div>
-                            <div class="mb-3">
-                                {{ form_row(form.loginMembre) }}
-                            </div>
+
+                            {{ form_errors(form) }}
+
+                            {{ form_row(form.nomMembre, {
+                                label: 'Nom du membre',
+                                attr: { class: 'form-control' }
+                            }) }}
+
+                            {{ form_row(form.loginMembre, {
+                                label: 'Login',
+                                attr: { class: 'form-control' }
+                            }) }}
+
                             {{ form_rest(form) }}
-                            <div>
-                                <button type="submit" class="btn btn-outline-success">enregistrer le membre</button>
+
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-outline-success">Enregistrer le membre</button>
                                 <a href="{{ path('app_membres') }}" class="btn btn-danger">Annuler</a>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     {{ form_end(form) }}
-    <div class="text-center">
-        <a href="{{ path('app_membres') }}">back to list</a>
+
+    <div class="text-center mt-3">
+        <a href="{{ path('app_membres') }}">Retour à la liste</a>
     </div>
 </div>
 {% endblock %}

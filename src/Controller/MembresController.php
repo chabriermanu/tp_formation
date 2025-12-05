@@ -9,7 +9,6 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Membres;
 use App\Form\MembreType;
 use Doctrine\ORM\EntityManagerInterface;
-//use Symfony\Component\Config\Builder\Method;
 use Symfony\Component\HttpFoundation\Request;
 
 final class MembresController extends AbstractController
